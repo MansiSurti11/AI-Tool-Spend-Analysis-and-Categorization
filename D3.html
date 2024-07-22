@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spend Data Categorization</title>
+    <!-- Include D3.js library -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <!-- Include frontend.js script -->
+    <script src="frontend.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #classificationForm {
+            margin-bottom: 20px;
+        }
+        #predictions {
+            margin-top: 20px;
+        }
+        .bar {
+            fill: steelblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spend Data Categorization</h1>
+    <!-- Form for entering descriptions -->
+    <form id="classificationForm">
+        <!-- Textarea to enter descriptions -->
+        <textarea id="descriptions" rows="4" cols="50" placeholder="Enter descriptions, separated by newline..."></textarea><br>
+        <!-- Button to trigger classification -->
+        <button type="button" onclick="classifyDescriptions()">Classify</button>
+    </form>
+    <!-- Heading for predictions -->
+    <h2>Predictions</h2>
+    <div id="predictions">
+        <!-- Predictions will be dynamically added here -->
+    </div>
+    <!-- Container for D3.js chart -->
+    <div id="chart">
+        <!-- D3.js chart will be rendered here -->
+    </div>
+    
+    <script>
+        // JavaScript code to handle classification and rendering of predictions and chart
+        
+        // Function to handle classification logic
+        function classifyDescriptions() {
+            // Get the descriptions entered by the user
+            var descriptions = document.getElementById('descriptions').value.trim().split('\n');
+            
+            // Example of processing (replace with your actual logic)
+            // Here, we are just displaying the input descriptions as predictions
+            var predictionsHTML = '<ul>';
+            descriptions.forEach(function(description) {
+                predictionsHTML += '<li>' + description + '</li>';
+            });
+            predictionsHTML += '</ul>';
+            
+            // Display predictions
+            document.getElementById('predictions').innerHTML = predictionsHTML;
+            
+            // Example of rendering a D3.js chart (replace with your actual chart code)
+            var data = [10, 20, 30, 40, 50]; // Example data for the chart
+            var svg = d3.select("#chart").append("svg")
+                        .attr("width", 400)
+                        .attr("height", 200);
+            
+            svg.selectAll("rect")
+               .data(data)
+               .enter().append("rect")
+               .attr("x", function(d, i) { return i * 70; })
+               .attr("y", function(d) { return 200 - d; })
+               .attr("width", 65)
+               .attr("height", function(d) { return d; })
+               .attr("fill", "steelblue");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "name": "frontend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "D3.js",
+    "scripts": {
+        "start": "react-scripts start"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.21.4",
+        "react": "^17.0.2",
+        "react-scripts": "^5.0.1"
+    }
+}
